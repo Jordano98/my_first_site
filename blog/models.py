@@ -19,3 +19,5 @@ class Post(models.Model):
     def __str__(self) :
         return '{}-{}'.format(self.title,self.id)
 
+class full_post (models.Model) :#just for blog single full post
+    counted_views_2 = models.IntegerField(default=0)
