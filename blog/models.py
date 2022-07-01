@@ -1,6 +1,4 @@
 from distutils.command.upload import upload
-from sre_parse import Verbose
-from tabnanny import verbose
 from turtle import title
 from django.db import models
 from django.contrib.auth.models import User
