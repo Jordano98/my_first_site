@@ -10,14 +10,17 @@ def blog_view(request):
     return render(request,'blog/blog-home.html',context)
 
 def blog_single(request,pid):
-    posts=Post.objects.filter(published_date__lte =Now(),status=1)
-    len_posts=len(posts)
+
     post=get_object_or_404(Post, pk=pid,published_date__lte =Now(),status=1)
+    nextpost = Post.objects.filter(created_date__gt=post.created_date).order_by('created_date').first()
+    prevpost = Post.objects.filter(created_date__lt=post.created_date).order_by('created_date').last()
+    
     def counter ():
         post.counted_views +=1
         post.save()
     counter()
-    context={'post':post ,'len_posts':len_posts}
+    
+    context={'post':post, 'prevpost': prevpost , 'nextpost' : nextpost}
     return render(request,'blog/blog-single.html',context)
 
 '''def blog_test (request,pid) :
