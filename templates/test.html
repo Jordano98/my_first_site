@@ -1,3 +1,5 @@
+{% load blog_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +23,14 @@
         {% endif %}
     {% endfor %}
     /-->
-    <p>{{post.title}}</p>
+    <h1>simple tamplate tags test</h1>
+    <p>{% totalposts %}</p>
+    <p>
+        {% posts as totalposts_info %}
+        {% for post in totalposts_info %}
+            <p>{{post}}</p>
+        {% endfor %}
+    </p>
 
 </body>
 
