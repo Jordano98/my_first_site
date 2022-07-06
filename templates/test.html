@@ -28,10 +28,9 @@
     <p>
         {% posts as totalposts_info %}
         {% for post in totalposts_info %}
-            <p>{{post}}</p>
+            <p>{{post.content|snippet:50}}</p>
         {% endfor %}
     </p>
-
 </body>
 
 </html>
