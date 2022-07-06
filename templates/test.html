@@ -31,6 +31,10 @@
             <p>{{post.content|snippet:50}}</p>
         {% endfor %}
     </p>
+    {% for post in totalposts_info %}
+        <p>{{post.title}}</p>
+    {% endfor %} 
+    <p>{% popularposts %}</p>
 </body>
 
 </html>
