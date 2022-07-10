@@ -4,10 +4,12 @@ from blog.models import Post
 
 # Create your views here.
 
-def blog_view(request,cat_name=None):
+def blog_view(request,**kwargs):
     posts=Post.objects.filter(published_date__lte =Now(),status=1)
-    if cat_name :
-        posts=posts.filter(category__name=cat_name)
+    if kwargs.get('cat_name') != None:
+        posts=posts.filter(category__name=kwargs['cat_name'])
+    if kwargs.get('author_username') != None :
+        posts=posts.filter(author__username=kwargs['author_username'])
     context={'posts':posts }
     return render(request,'blog/blog-home.html',context)
 
@@ -31,5 +33,13 @@ def blog_test (request) :
 def blog_category(request,cat_name):
     posts=Post.objects.filter(status=1)
     posts=posts.filter(category__name=cat_name)
+    context={'posts':posts }
+    return render(request,'blog/blog-home.html',context)
+
+def blog_search(request):
+    posts=Post.objects.filter(published_date__lte =Now(),status=1)
+    if request.method == 'GET':
+        #print(request.GET.get('s'))
+        pass
     context={'posts':posts }
     return render(request,'blog/blog-home.html',context)
