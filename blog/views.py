@@ -40,6 +40,7 @@ def blog_search(request):
     posts=Post.objects.filter(published_date__lte =Now(),status=1)
     if request.method == 'GET':
         #print(request.GET.get('s'))
-        pass
+        if x := request.GET.get('s') : #warlus operator :=
+            posts=posts.filter(content__contains=x)
     context={'posts':posts }
     return render(request,'blog/blog-home.html',context)

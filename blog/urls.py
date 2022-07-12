@@ -9,5 +9,5 @@ urlpatterns = [
     path('category/<str:cat_name>',blog_view,name="category"),
     path('author/<str:author_username>',blog_view,name="author"),
     path('test',blog_test,name="test"),
-    path('search',blog_search,name="search"),
+    path('search/',blog_search,name="search"),
 ]
