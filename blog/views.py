@@ -13,8 +13,9 @@ def blog_view(request,**kwargs):
         posts=posts.filter(author__username=kwargs['author_username'])
     
     posts=Paginator(posts,3)
+    page_number=request.GET.get('page')
+
     try :
-        page_number=request.GET.get('page')
         posts=posts.get_page(page_number)
     except PageNotAnInteger:
         posts=posts.get_page(1)
