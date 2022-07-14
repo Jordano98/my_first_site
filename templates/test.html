@@ -1,5 +1,5 @@
 {% load blog_tags %}
-
+{% load website_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +23,7 @@
         {% endif %}
     {% endfor %}
     /-->
-    <h1>simple tamplate tags test</h1>
+    <!-- <h1>simple tamplate tags test</h1>
     <p>{% totalposts %}</p>
     <p>
         {% posts as totalposts_info %}
@@ -33,8 +33,21 @@
     </p>
     {% for post in totalposts_info %}
         <p>{{post.title}}</p>
-    {% endfor %} 
-    <p>{% popularposts %}</p>
+    {% endfor %}  -->
+    <h2 style="text-align: center;">form-test</h2>
+
+    <form action="{% url 'website:test' %}" method="post">
+        {% csrf_token %}
+        <label for="name">name:</label>
+        <input name='name' type="text"><br>
+        <label for="email">email:</label>
+        <input name='email' type="email"><br>
+        <label for="subject">subject:</label>
+        <input name='subject' type="subject"><br>
+        <label for="massage">massage:</label>
+        <input name='massage' type="text"><br>
+        <button type="submit">submit</button>
+    </form>
 </body>
 
 </html>
