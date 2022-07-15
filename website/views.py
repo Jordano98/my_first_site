@@ -1,6 +1,6 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,HttpResponseRedirect
 from website.models import Contact
-from website.forms import NameForm, contactform
+from website.forms import NameForm, contactform,newsletterform
 
 def index_view(request) :
     return render(request,'website/index.html')
@@ -9,7 +9,21 @@ def about_view(request):
     return render(request,"website/about.html")
 
 def contact_view(request):
-    return render(request,"website/contact.html")
+    if request.method=='POST':
+        form=contactform(request.POST)
+        if form.is_valid():
+            form.save()
+    form=contactform()
+    return render(request,"website/contact.html",{'form':form})
+
+def newsletter_view(request):
+    if request.method=='POST':
+        form=newsletterform(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('./')
+    form=newsletterform()
+    #there is no need to rendering
 
 def elements_view(request):
     return render(request,"website/elements.html")
