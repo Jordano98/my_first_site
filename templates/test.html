@@ -38,7 +38,7 @@
 
     <form action="{% url 'website:test' %}" method="post">
         {% csrf_token %}
-        <label for="name">name:</label>
+        <!-- <label for="name">name:</label>
         <input name='name' type="text"><br>
         <label for="email">email:</label>
         <input name='email' type="email"><br>
@@ -46,6 +46,8 @@
         <input name='subject' type="subject"><br>
         <label for="massage">massage:</label>
         <input name='massage' type="text"><br>
+        <button type="submit">submit</button> -->
+        {{form.as_p}}
         <button type="submit">submit</button>
     </form>
 </body>
