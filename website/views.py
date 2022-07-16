@@ -13,11 +13,15 @@ def contact_view(request):
     if request.method=='POST':
         form=contactform(request.POST)
         if form.is_valid():
-            form.save()
+            name=form.cleaned_data['name']
+            result=form.save(commit=False)
+            result.name='unknown'
+            result.save()
             messages.add_message(request,messages.SUCCESS,'your ticket submited successfully')
         else:
             messages.add_message(request,messages.ERROR,'your ticket did not submited')
     form=contactform()
+
     return render(request,"website/contact.html",{'form':form})
 
 def newsletter_view(request):
