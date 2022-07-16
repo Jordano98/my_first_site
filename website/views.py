@@ -29,7 +29,11 @@ def newsletter_view(request):
         form=newsletterform(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('./')
+            
+            messages.add_message(request,messages.SUCCESS,'your Email submited successfully')
+        else:
+            messages.add_message(request,messages.ERROR,'your Email did not submited')
+        return HttpResponseRedirect('./')
     form=newsletterform()
     #there is no need to rendering
 
