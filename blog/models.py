@@ -1,3 +1,4 @@
+from django.urls import reverse
 from distutils.command.upload import upload
 from turtle import title
 from django.db import models
@@ -11,6 +12,7 @@ class Category(models.Model) :
         return self.name
     class Meta:
         verbose_name_plural='categories'
+
 class Post(models.Model):
     image = models.ImageField(upload_to='blog/', default='blog/default.jpg')
     author = models.ForeignKey(User,on_delete=models.SET_NULL,null=True) 
@@ -27,4 +29,6 @@ class Post(models.Model):
         ordering=['-created_date']
     def __str__(self) :
         return '{}-{}'.format(self.title,self.id)
-    
+
+    def get_absolute_url(self) :
+        return reverse ('blog:single',kwargs={'pid':self.id})
