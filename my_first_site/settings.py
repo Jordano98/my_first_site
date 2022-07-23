@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'robots',
     'django.contrib.staticfiles',
     'debug_toolbar',
+    'taggit',
     'website.apps.WebsiteConfig',
     'blog'
 ]
