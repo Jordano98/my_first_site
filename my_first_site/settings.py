@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'taggit',
+    'django_summernote',
     'website.apps.WebsiteConfig',
     'blog'
 ]
