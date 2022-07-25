@@ -64,7 +64,6 @@
 						</p>
 					</div>
 				</div>
-
 				<div class="navigation-area">
 					<div class="row">
 						<div
@@ -126,7 +125,6 @@
 					<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 				</div>
 				-->
-
 				<div class="comments-area">
 					<h4>{{comments|length}} Comments</h4>
 					{% for comment in comments %}
@@ -154,8 +152,7 @@
 						<p>no comments here,be the fisrt one :))</p>
 					</div>
 					{% endfor %}
-				</div>
-					
+				</div>	
 				<div class="comment-form">
 					<h4>Leave a Comment</h4>
 					<form method="post" action="{% url 'blog:single' pid=post.id %}">
