@@ -1,6 +1,6 @@
 from django.db.models.functions import Now
 from django.shortcuts import render,get_object_or_404
-from blog.models import Post
+from blog.models import Post,Comment,Category
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 
 # Create your views here.
@@ -29,6 +29,7 @@ def blog_view(request,**kwargs):
 def blog_single(request,pid):
 
     post=get_object_or_404(Post, pk=pid,published_date__lte =Now(),status=1)
+    comments=Comment.objects.filter(post=post.id,approach=True)
     nextpost = Post.objects.filter(created_date__gt=post.created_date).order_by('created_date').first()
     prevpost = Post.objects.filter(created_date__lt=post.created_date).order_by('created_date').last()
     
@@ -37,7 +38,7 @@ def blog_single(request,pid):
         post.save()
     counter()
     
-    context={'post':post, 'prevpost': prevpost , 'nextpost' : nextpost}
+    context={'post':post, 'prevpost': prevpost , 'nextpost' : nextpost,'comments':comments}
     return render(request,'blog/blog-single.html',context)
 
 def blog_test (request) :
