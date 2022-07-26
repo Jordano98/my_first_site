@@ -19,7 +19,7 @@ admin.site.register(Category)
 class CommentAdmin(admin.ModelAdmin):
     date_hierarchy='created_date'
     empty_value_display='-empty-'
-    list_display = ('name' ,'post','email','approach','created_date')
+    list_display = ('post','name','email','approach','created_date')
     list_filter = ('post','approach')
     search_fields = ['name','post']
 admin.site.register(Comment,CommentAdmin)
