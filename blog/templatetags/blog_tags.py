@@ -13,8 +13,8 @@ def function() :
     return posts
 
 @register.simple_tag(name='comment-count')
-def function() :
-    return Comment.objects.filter(approach=True).count()
+def function(pid) :
+    return Comment.objects.filter(post=pid,approach=True).count()
 
 @register.filter
 def snippet(value,arg=20):
