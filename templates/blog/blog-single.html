@@ -103,11 +103,8 @@
 						</div>
 					</div>
 				</div>
-				<!--
 				<div class="comments-area">
-
 					<h4>{{comments|length}} Comments</h4>
-
 					<div class="comment-list">
 						{% for comment in comments %}
 						<div class="single-comment justify-content-between d-flex">
@@ -130,9 +127,7 @@
 						<p>no comments here,be the first one :)))</p>
 						{% endfor %}
 					</div>
-					{% endfor %}
 				</div>
-					
 				<div class="comment-form">
 					<h4>Leave a Comment</h4>
 					<form method="post" action="{% url 'blog:single' pid=post.id %}">
