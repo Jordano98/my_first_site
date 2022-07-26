@@ -14,6 +14,7 @@ def function() :
 
 @register.simple_tag(name='comment-count')
 def function(pid) :
+
     return Comment.objects.filter(post=pid,approach=True).count()
 
 @register.filter

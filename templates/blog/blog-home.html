@@ -104,7 +104,9 @@
 							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date|date:"D d M Y"}}</a> <span class="lnr lnr-calendar-full"></span></p>
 							<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_views}}</a> <span
 									class="lnr lnr-eye"></span></p>
-							<p class="comments col-lg-12 col-md-12 col-6"><a href="#">{% comment-count pid=post.id %} Comments</a> <span
+
+							<p class="comments col-lg-12 col-md-12 col-6"><a href="#">{% comment-count post.id %} Comments</a> <span
+
 									class="lnr lnr-bubble"></span></p>
 						</div>
 					</div>
@@ -153,7 +155,7 @@
 				</nav>
 			</div>
 			<div class="col-lg-4 sidebar-widgets">
-				<div class="widget-wrap">
+			<div class="widget-wrap">
 					{% include 'blog/blog-search.html' %}
 					{% include 'blog/blog-writer.html' %}
 					{% latestposts %}

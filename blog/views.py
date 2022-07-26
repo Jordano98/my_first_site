@@ -1,9 +1,12 @@
 from django.db.models.functions import Now
-from django.shortcuts import render,get_object_or_404
+
+from django.shortcuts import render,get_object_or_404,HttpResponse,HttpResponseRedirect
 from blog.models import Post,Comment,Category
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
+from blog.forms import commentform
 from django.contrib import messages
-from blog.form import commentform
+
+
 
 # Create your views here.
 
@@ -40,17 +43,30 @@ def blog_single(request,pid):
             messages.add_message(request,messages.ERROR,'your comment did not submited')
     form=commentform()
 
+    if request.method=='POST':
+        form=commentform(request.POST)
+        if form.is_valid():
+            form.save()
+            
+            messages.add_message(request,messages.SUCCESS,'your comment submited successfully')
+        else:
+            messages.add_message(request,messages.ERROR,'your comment did not submited')
+
     post=get_object_or_404(Post, pk=pid,published_date__lte =Now(),status=1)
     comments=Comment.objects.filter(post=post.id,approach=True)
     nextpost = Post.objects.filter(created_date__gt=post.created_date).order_by('created_date').first()
     prevpost = Post.objects.filter(created_date__lt=post.created_date).order_by('created_date').last()
-    
+
     def counter ():
         post.counted_views +=1
         post.save()
     counter()
+
+    form= commentform()
     
-    context={'post':post, 'prevpost': prevpost , 'nextpost' : nextpost,'comments':comments}
+
+    context={'post':post, 'prevpost': prevpost , 'nextpost' : nextpost , 'comments':comments ,'form':form}
+
     return render(request,'blog/blog-single.html',context)
 
 def blog_test (request) :

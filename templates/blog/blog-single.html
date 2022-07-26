@@ -3,6 +3,7 @@
 {% load blog_tags %}
 {% load humanize %}
 {% block content %}
+
 <!-- start banner Area -->
 <section class="relative about-banner">
 	<div class="overlay overlay-bg"></div>
@@ -102,8 +103,11 @@
 						</div>
 					</div>
 				</div>
+				<!--
 				<div class="comments-area">
+
 					<h4>{{comments|length}} Comments</h4>
+
 					<div class="comment-list">
 						{% for comment in comments %}
 						<div class="single-comment justify-content-between d-flex">
@@ -113,7 +117,9 @@
 								</div>
 								<div class="desc">
 									<h5><a href="#">{{comment.name}}</a></h5>
+
 									<p class="date">{{comment.created_date|naturalday}}</p>
+
 									<p class="comment">
 										{{comment.massage}}
 									</p>
@@ -124,11 +130,14 @@
 						<p>no comments here,be the first one :)))</p>
 						{% endfor %}
 					</div>
+					{% endfor %}
 				</div>
+					
 				<div class="comment-form">
 					<h4>Leave a Comment</h4>
 					<form method="post" action="{% url 'blog:single' pid=post.id %}">
 						{% csrf_token %}
+						<input type="hidden" name="post" value="{{post.id}}">
 						<div class="form-group form-inline">
 							<div class="form-group col-lg-6 col-md-12 name">
 								<input type="text" class="form-control" name="name" placeholder="Enter Name"
@@ -191,8 +200,8 @@
 							{% endfor %}
 						</ul>
 					</div>
-				</div>
-			</div>
+				</div>	
+			</div>	
 		</div>
 	</div>
 </section>
