@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'django_summernote',
     'captcha',
     'website.apps.WebsiteConfig',
-    'blog'
+    'blog',
+    'accounts',
 ]
 
 #site framework
