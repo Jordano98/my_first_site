@@ -19,7 +19,7 @@ def login_view(request):
     else:
         return redirect('/')
 
-@login_required
+@login_required(login_url='/accounts/login')
 def logout_view(request):
     #if request.user.is_authenticated:
     logout(request)
