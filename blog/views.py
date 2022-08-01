@@ -44,7 +44,7 @@ def blog_single(request,pid):
     form= commentform()
 
     post=get_object_or_404(Post, pk=pid,published_date__lte =Now(),status=1)
-    if   post.login_require == False:
+    if  post.login_require == False or request.user.is_authenticated:
         comments=Comment.objects.filter(post=post.id,approach=True)
         nextpost = Post.objects.filter(created_date__gt=post.created_date).order_by('created_date').first()
         prevpost = Post.objects.filter(created_date__lt=post.created_date).order_by('created_date').last()
