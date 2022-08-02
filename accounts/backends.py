@@ -2,6 +2,7 @@ from django.contrib.auth.hashers import check_password
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 
+#this can be used for signup and registration part as well
 
 User = get_user_model()
 
