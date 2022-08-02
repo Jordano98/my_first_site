@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'blog',
     'accounts',
+    'crispy_forms',
 ]
 
 #site framework
@@ -165,3 +166,5 @@ INTERNAL_IPS = [
 AUTHENTICATION_BACKENDS = [
     'accounts.backends.EmailPhoneUsernameAuthenticationBackend'
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
