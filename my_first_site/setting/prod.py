@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-593n1+(p_e&2bh_quzag(ncwz5%8$^)m3#t$9^c&ob%)%jinum
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['comphilia.com','www.comphilia.com']
 
 #INSTALL_APPS=[]
 
