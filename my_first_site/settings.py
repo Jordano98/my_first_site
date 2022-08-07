@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blog',
     'accounts',
     'crispy_forms',
+    'django_underconstruction',
 ]
 
 
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    'django_underconstruction.middleware.UnderConstructionMiddleware',
 ]
 
 #captcha admin setting
@@ -146,3 +148,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During devel
 
 #DEPLOY
 CSRF_COOKIE_SECURE=True
+
+#under-construction-settings
+
+UNDER_CONSTRUCTION=True
+UNDER_CONSTRUCTION_TEMPLATE='django_underconstruction/construction.html'
