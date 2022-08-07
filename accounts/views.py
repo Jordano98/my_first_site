@@ -1,6 +1,7 @@
+from accounts.forms import my_UserCreationForm
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.forms import AuthenticationForm,UserCreationForm,PasswordResetForm
+from django.contrib.auth.forms import AuthenticationForm,PasswordResetForm
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
@@ -37,11 +38,11 @@ def logout_view(request):
 def signup_view(request):
     if not request.user.is_authenticated:
         if request.method == 'POST':
-            form=UserCreationForm(request.POST)
+            form=my_UserCreationForm(request.POST)
             if form.is_valid():
                 form.save()
                 return redirect('/accounts/login')
-        form=UserCreationForm()
+        form=my_UserCreationForm()
         context={'form':form}
         return render (request,'accounts/signup.html',context)
     else:
