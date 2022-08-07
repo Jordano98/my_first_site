@@ -1,7 +1,7 @@
 from accounts.forms import my_UserCreationForm
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.forms import AuthenticationForm,UserCreationForm,PasswordResetForm
+from django.contrib.auth.forms import AuthenticationForm,PasswordResetForm
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
