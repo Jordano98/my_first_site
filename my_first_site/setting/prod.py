@@ -14,15 +14,19 @@ ALLOWED_HOSTS = ['comphilia.com','www.comphilia.com']
 #INSTALL_APPS=[]
 
 #site framework
-SITE_ID=2
+SITE_ID=3
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'comphili_travel',
+        'USER': 'comphili_jordano',
+        'PASSWORD': '09190860656ABc.',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
