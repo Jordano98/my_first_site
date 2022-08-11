@@ -42,7 +42,16 @@ INSTALLED_APPS = [
     'accounts',
     'crispy_forms',
     'django_underconstruction',
+    "compressor",
 ]
+
+#static files finders
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
 
 
 #robots
@@ -151,5 +160,8 @@ CSRF_COOKIE_SECURE=True
 
 #under-construction-settings
 
-UNDER_CONSTRUCTION=True
+UNDER_CONSTRUCTION=False
 UNDER_CONSTRUCTION_TEMPLATE='django_underconstruction/construction.html'
+
+#django-compressor settings
+COMPRESS_ENABLED=True
