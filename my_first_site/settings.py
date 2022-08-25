@@ -155,8 +155,7 @@ AUTHENTICATION_BACKENDS = [
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
 
-#DEPLOY
-CSRF_COOKIE_SECURE=True
+
 
 #under-construction-settings
 
